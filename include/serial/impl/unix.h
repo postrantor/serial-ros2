@@ -65,8 +65,7 @@ private:
 
 class serial::Serial::SerialImpl {
 public:
-  SerialImpl(const string &port, unsigned long baudrate, bytesize_t bytesize,
-             parity_t parity, stopbits_t stopbits, flowcontrol_t flowcontrol);
+  SerialImpl(const string &port, unsigned long baudrate, bytesize_t bytesize, parity_t parity, stopbits_t stopbits, flowcontrol_t flowcontrol);
 
   virtual ~SerialImpl();
 
@@ -150,21 +149,21 @@ protected:
   void reconfigurePort();
 
 private:
-  string port_; // Path to the file descriptor
-  int fd_;      // The current file descriptor
+  string port_;  // Path to the file descriptor
+  int fd_;       // The current file descriptor
 
   bool is_open_;
   bool xonxoff_;
   bool rtscts_;
 
-  Timeout timeout_;        // Timeout for read operations
-  unsigned long baudrate_; // Baudrate
-  uint32_t byte_time_ns_;  // Nanoseconds to transmit/receive a single byte
+  Timeout timeout_;         // Timeout for read operations
+  unsigned long baudrate_;  // Baudrate
+  uint32_t byte_time_ns_;   // Nanoseconds to transmit/receive a single byte
 
-  parity_t parity_;           // Parity
-  bytesize_t bytesize_;       // Size of the bytes
-  stopbits_t stopbits_;       // Stop Bits
-  flowcontrol_t flowcontrol_; // Flow Control
+  parity_t parity_;            // Parity
+  bytesize_t bytesize_;        // Size of the bytes
+  stopbits_t stopbits_;        // Stop Bits
+  flowcontrol_t flowcontrol_;  // Flow Control
 
   // Mutex used to lock the read functions
   pthread_mutex_t read_mutex;
@@ -172,8 +171,8 @@ private:
   pthread_mutex_t write_mutex;
 };
 
-} // namespace serial
+}  // namespace serial
 
-#endif // SERIAL_IMPL_UNIX_H
+#endif  // SERIAL_IMPL_UNIX_H
 
-#endif // !defined(_WIN32)
+#endif  // !defined(_WIN32)
